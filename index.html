@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chiu Cafe in Ponda, Goa — authentic Pintu and Didi flavours. Breakfast, lunch, evening snacks and refreshing beverages.">
+  <meta name="theme-color" content="#35160f">
+  <title>Chiu Cafe | Authentic Pintu and Didi Flavours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coffee:#35160f; --coffee2:#51251a; --cream:#fff8ef; --paper:#fffdf9;
+      --pink:#e84c69; --pink-soft:#ffe3e5; --gold:#f5b544; --green:#276447;
+      --ink:#30201b; --muted:#786a63; --line:#eadbd0; --shadow:0 16px 42px rgba(53,22,15,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(53,22,15,.97);backdrop-filter:blur(12px);color:#fff}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:"Playfair Display",serif;font-size:1.75rem;font-weight:700;color:#ffd98e;white-space:nowrap}
+    .brand span{color:#ff9aa8}
+    .navlinks{display:flex;align-items:center;gap:27px;font-size:.94rem;font-weight:600}
+    .navlinks a{opacity:.9;transition:.2s}
+    .navlinks a:hover{color:#ffd98e;opacity:1}
+    .call{background:var(--green);padding:11px 18px;border-radius:99px;font-weight:700;white-space:nowrap}
+    .menu-toggle{display:none;background:none;border:0;color:white;font-size:1.7rem;cursor:pointer}
+    .hero{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(90deg,rgba(28,11,7,.88),rgba(28,11,7,.48) 52%,rgba(28,11,7,.10)),url("assets/chiu-cafe-hero.png") center 45%/cover no-repeat;color:white}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:70px;background:linear-gradient(transparent,var(--cream));pointer-events:none}
+    .hero-content{position:relative;z-index:1;padding:76px 0 100px;max-width:650px}
+    .eyebrow{color:#ffd98e;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:800}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(3.2rem,8vw,6.4rem);line-height:.98;margin:15px 0;color:#fff}
+    h1 span{color:#ff9aa8}
+    .tagline{font-family:"Playfair Display",serif;font-size:clamp(1.25rem,3vw,1.8rem);font-style:italic;color:#ffe0b3;margin:18px 0 24px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0}
+    .meta-pill{border:1px solid rgba(255,255,255,.45);background:rgba(0,0,0,.22);padding:10px 15px;border-radius:99px;font-size:.92rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:99px;padding:13px 21px;font-weight:800;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(0,0,0,.15)}
+    .btn-primary{background:var(--pink);color:white}
+    .btn-dark{background:var(--coffee);color:white}
+    .quick-info{position:relative;z-index:2;margin-top:-24px}
+    .info-grid{display:grid;grid-template-columns:1.35fr 1fr 1.2fr 1fr;gap:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+    .info-item{padding:22px 24px;border-right:1px solid var(--line)}
+    .info-item:last-child{border:0}
+    .info-label{font-size:.78rem;color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+    .info-item p{margin:0;font-size:.92rem}
+    section{padding:82px 0}
+    .section-head{text-align:center;margin-bottom:34px}
+    .kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;color:var(--pink);font-weight:800}
+    h2{font-family:"Playfair Display",serif;font-size:clamp(2.1rem,4vw,3.1rem);line-height:1.15;margin:8px 0;color:var(--coffee)}
+    .section-sub{color:var(--muted);margin:8px auto 0;max-width:620px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .about-copy h2{text-align:left}
+    .about-copy p{color:var(--muted);font-size:1.05rem}
+    .about-note{border-left:4px solid var(--gold);padding:10px 0 10px 18px;margin:24px 0;color:var(--coffee);font-family:"Playfair Display",serif;font-style:italic;font-size:1.18rem}
+    .about-art{min-height:330px;border-radius:28px;background:linear-gradient(145deg,#ffe6dc,#f9c9c7);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+    .about-art .food-emoji{font-size:clamp(7rem,16vw,12rem);filter:drop-shadow(0 18px 10px rgba(53,22,15,.18))}
+    .art-sticker{position:absolute;background:#fffdf6;padding:12px 17px;border-radius:16px;box-shadow:var(--shadow);font-weight:800;color:var(--coffee)}
+    .sticker-one{top:24px;left:22px;transform:rotate(-7deg)}
+    .sticker-two{bottom:25px;right:22px;transform:rotate(6deg)}
+    .menu-section{background:#fffdf9}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .menu-card{border:1px solid var(--line);border-radius:var(--radius);padding:25px;background:white;box-shadow:0 8px 24px rgba(53,22,15,.045)}
+    .menu-card.breakfast{background:linear-gradient(150deg,#fff8e9,#fff)}
+    .menu-card.lunch{background:linear-gradient(150deg,#f1f7eb,#fff)}
+    .menu-card.evening{background:linear-gradient(150deg,#fff0f0,#fff)}
+    .menu-card h3{font-family:"Playfair Display",serif;font-size:1.45rem;margin:0 0 17px;color:var(--coffee)}
+    .menu-card h3 span{font-family:inherit;margin-right:7px}
+    .menu-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .menu-list li{display:flex;gap:10px;align-items:flex-start;font-size:.96rem}
+    .menu-list li:before{content:"✦";color:var(--pink);font-size:.8rem;margin-top:4px}
+    .menu-footnote{text-align:center;color:var(--muted);font-size:.88rem;margin-top:22px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .gallery-tile{height:220px;border-radius:18px;overflow:hidden;background:#f3d8c8;position:relative}
+    .gallery-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .gallery-tile:hover img{transform:scale(1.06)}
+    .gallery-tile span{position:absolute;left:14px;bottom:13px;background:rgba(53,22,15,.78);color:#fff;padding:6px 11px;border-radius:99px;font-size:.8rem;font-weight:700}
+    .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+    .visit-card,.review-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 8px 24px rgba(53,22,15,.05)}
+    .visit-card h3,.review-card h3{font-family:"Playfair Display",serif;font-size:1.55rem;color:var(--coffee);margin:0 0 8px}
+    .map-frame{width:100%;height:280px;border:0;border-radius:16px;margin:17px 0}
+    .address{color:var(--muted);margin:10px 0 18px}
+    .review-placeholder{border:1px dashed #d9bdb0;border-radius:16px;padding:20px;margin:16px 0;color:var(--muted);background:#fffaf5}
+    .review-placeholder strong{display:block;color:var(--coffee);margin-bottom:5px}
+    .review-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
+
+    .review-form{display:grid;gap:13px;margin:18px 0}
+    .review-form label{display:grid;gap:6px;font-weight:700;color:var(--coffee);font-size:.92rem}
+    .review-form input,.review-form textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit;color:var(--ink)}
+    .review-form textarea{min-height:105px;resize:vertical}
+    .star-picker{display:flex;gap:7px;align-items:center}
+    .star-picker button{border:0;background:none;padding:0;font-size:1.8rem;color:#c9bdb4;cursor:pointer}
+    .star-picker button.active{color:#f5b544}
+    .review-list{display:grid;gap:12px;margin-top:18px}
+    .review-entry{background:#fffaf5;border:1px solid var(--line);border-radius:14px;padding:15px}
+    .review-entry strong{color:var(--coffee)}
+    .review-entry .stars{color:#e7a92f;letter-spacing:2px}
+    .review-entry p{margin:7px 0 0;color:var(--muted);white-space:pre-wrap}
+    .review-status{font-size:.9rem;color:var(--green);min-height:1.4em}
+    .review-note{font-size:.8rem;color:var(--muted)}
+    footer{background:var(--coffee);color:#fff;padding:48px 0 22px}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;align-items:start}
+    .footer-brand{font-family:"Playfair Display",serif;font-size:2rem;color:#ffd98e}
+    footer p,footer a{color:#f3ded2}
+    .footer-title{font-weight:800;color:#ffd98e;margin-bottom:10px}
+    .copyright{border-top:1px solid rgba(255,255,255,.18);margin-top:32px;padding-top:18px;text-align:center;color:#d9c1b6;font-size:.83rem}
+    .mobile-bottom{display:none}
+    @media(max-width:900px){
+      .navlinks{gap:15px}.info-grid{grid-template-columns:1fr 1fr}.info-item:nth-child(2){border-right:0}.info-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .menu-grid{grid-template-columns:1fr 1fr}.menu-card.evening{grid-column:span 2}
+      .about-grid{gap:28px}
+    }
+    @media(max-width:680px){
+      .container{width:min(100% - 28px,560px)}
+      .nav{height:66px}.brand{font-size:1.45rem}.menu-toggle{display:block}
+      .navlinks{display:none;position:absolute;top:66px;left:0;right:0;background:var(--coffee);padding:18px 22px 24px;flex-direction:column;align-items:stretch;gap:16px;border-top:1px solid rgba(255,255,255,.12)}
+      .navlinks.open{display:flex}.navlinks .call{text-align:center}
+      .hero{min-height:570px;background-position:58% center}
+      .hero:before{content:"";position:absolute;inset:0;background:rgba(24,9,5,.24)}
+      .hero-content{padding:65px 0 100px}
+      .hero-meta{gap:8px}.meta-pill{font-size:.8rem;padding:8px 11px}
+      .quick-info{margin-top:-35px}.info-grid{grid-template-columns:1fr 1fr}
+      .info-item{padding:16px 13px}.info-item p{font-size:.82rem}
+      section{padding:62px 0}
+      .about-grid,.visit-grid{grid-template-columns:1fr}
+      .about-art{min-height:250px;order:-1}
+      .menu-grid{grid-template-columns:1fr}.menu-card.evening{grid-column:auto}
+      .gallery-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .gallery-tile{height:160px}
+      .footer-grid{grid-template-columns:1fr;gap:20px}
+      .mobile-bottom{display:flex;position:fixed;z-index:19;bottom:12px;left:12px;right:12px;gap:10px;background:rgba(53,22,15,.96);padding:9px;border-radius:99px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+      .mobile-bottom a{flex:1;text-align:center;color:white;padding:9px 5px;font-size:.86rem;font-weight:800;border-radius:99px}
+      .mobile-bottom a:first-child{background:var(--pink)}
+      footer{padding-bottom:100px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home">☕ Chiu <span>Cafe</span></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" onclick="toggleMenu()">☰</button>
+      <nav class="navlinks" id="navlinks">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#menu" onclick="closeMenu()">Menu</a>
+        <a href="#gallery" onclick="closeMenu()">Gallery</a>
+        <a href="#location" onclick="closeMenu()">Location</a>
+        <a href="#reviews" onclick="closeMenu()">Reviews</a>
+        <a class="call" href="tel:+919552350555">☎ 9552350555</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Freshly made • Full of flavour</div>
+          <h1>Chiu <span>Cafe</span></h1>
+          <p class="tagline">Authentic Pintu and Didi Flavours</p>
+          <div class="hero-meta">
+            <div class="meta-pill">◷ Open daily: 06:00 AM – 09:00 PM</div>
+            <div class="meta-pill">Weekly off: Sunday</div>
+          </div>
+          <a class="btn btn-primary" href="#menu">Explore Our Menu <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container quick-info">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">⌖ Our Address</div><p>Shop No. 03, Ground Floor, Raj, Durga Heritage, Daag, Ponda – 403401<br><strong>Landmark:</strong> Opp. PWD Water Supply</p></div>
+        <div class="info-item"><div class="info-label">☎ Contact</div><p><a href="tel:+919552350555">9552350555</a></p></div>
+        <div class="info-item"><div class="info-label">✉ Email</div><p><a href="mailto:chiucafe26@gmail.com">chiucafe26@gmail.com</a></p></div>
+        <div class="info-item"><div class="info-label">◷ Timings</div><p>06:00 AM – 09:00 PM<br><strong>Weekly off: Sunday</strong></p></div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <div class="kicker">A little about us</div>
+          <h2>Good food, warm hearts.</h2>
+          <p>Welcome to Chiu Cafe, where you can enjoy authentic Pintu and Didi flavours. From a comforting breakfast to a satisfying lunch and evening street-food favourites, there is something delicious waiting for you.</p>
+          <div class="about-note">“Fresh flavours, familiar favourites, and a little happiness in every bite.”</div>
+          <a class="btn btn-dark" href="#menu">See What's on the Menu →</a>
+        </div>
+        <div class="about-art" aria-label="Illustration representing cafe food">
+          <div class="art-sticker sticker-one">Made with love ♡</div>
+          <div class="food-emoji">🍔 🥘</div>
+          <div class="art-sticker sticker-two">Chiu Cafe • Ponda</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Something tasty for every time</div><h2>Our Menu</h2><p class="section-sub">From morning breakfast to evening snacks, discover your favourites at Chiu Cafe.</p></div>
+        <div class="menu-grid">
+          <article class="menu-card breakfast">
+            <h3><span>☀️</span> Morning – Breakfast</h3>
+            <ul class="menu-list">
+              <li>Vadapav</li><li>Pav Bhaji (Bombay style)</li><li>Bhaji Pav (Goan style)</li><li>Misal Pav</li><li>Cut Vada</li><li>Pohe</li><li>Mirchi Bhaji</li><li>Potato Bhaji (Kappa)</li><li>Tea, Coffee &amp; Cold Coffee</li>
+            </ul>
+          </article>
+          <article class="menu-card lunch">
+            <h3><span>🌤️</span> Afternoon – Lunch</h3>
+            <ul class="menu-list">
+              <li>Pulav – Raita</li><li>Plain Rice – Chole</li><li>Jeera Rice – Rajma</li>
+            </ul>
+          </article>
+          <article class="menu-card evening">
+            <h3><span>🌙</span> Evening – Snacks</h3>
+            <ul class="menu-list">
+              <li>Sev Puri</li><li>Dahi Puri</li><li>Aloo Ragada Tikki Chaat</li><li>Dabeli</li><li>Grilled Sandwich</li><li>Momos</li><li>French Fries</li><li>Vadapav</li><li>Mirchi Bhaji</li><li>Potato Bhaji</li><li>Virgin Mojito</li><li>Cold Coffee, Tea &amp; Coffee</li>
+            </ul>
+          </article>
+        </div>
+        <p class="menu-footnote">Menu availability may vary during the day. Please call the cafe for details.</p>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head"><div class="kicker">A feast for the eyes</div><h2>Food Gallery</h2><p class="section-sub">A taste of the street-food favourites and refreshing treats you can enjoy.</p></div>
+        <div class="gallery-grid">
+          <div class="gallery-tile"><img loading="lazy" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85" alt="Indian snack platter"><span>Street food favourites</span></div>
+          <div class="gallery-tile"><img loading="lazy" src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=85" alt="Indian curry dish"><span>Rich and flavourful</span></div>
+          <div class="gallery-tile"><img loading="lazy" src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=900&q=85" alt="Indian chaat food"><span>Chaat cravings</span></div>
+          <div class="gallery-tile"><img loading="lazy" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=900&q=85" alt="Steamed dumplings"><span>Momos</span></div>
+          <div class="gallery-tile"><img loading="lazy" src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=85" alt="Grilled sandwich"><span>Sandwich time</span></div>
+          <div class="gallery-tile"><img loading="lazy" src="https://images.unsplash.com/photo-1513558161293-c2b1a9f3a418?auto=format&fit=crop&w=900&q=85" alt="Refreshing mint drink"><span>Cool refreshments</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" style="background:#fffdf9">
+      <div class="container visit-grid">
+        <div class="visit-card">
+          <div class="kicker">Come say hello</div><h3>Find Chiu Cafe</h3>
+          <p class="address">Shop No. 03, Ground Floor, Raj, Durga Heritage, Daag, Ponda – 403401.<br><strong>Landmark:</strong> Opp. PWD Water Supply.</p>
+          <iframe class="map-frame" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Chiu%20Cafe%2C%20Ponda%2C%20Goa%20403401&output=embed" title="Map showing Chiu Cafe in Ponda"></iframe>
+          <a class="btn btn-dark" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Chiu+Cafe%2C+Ponda%2C+Goa+403401">Open in Google Maps ↗</a>
+        </div>
+        <div class="review-card" id="reviews">
+          <div class="kicker">Your feedback matters</div><h3>Customer Reviews</h3>
+          <p class="address">Have you visited Chiu Cafe? Share your experience and help others discover us.</p>
+          <form class="review-form" id="reviewForm">
+            <label>Your name<input id="reviewName" maxlength="60" required placeholder="Enter your name"></label>
+            <label>Your rating
+              <span class="star-picker" id="starPicker" role="group" aria-label="Choose a star rating">
+                <button type="button" data-rating="1" aria-label="1 star">★</button>
+                <button type="button" data-rating="2" aria-label="2 stars">★</button>
+                <button type="button" data-rating="3" aria-label="3 stars">★</button>
+                <button type="button" data-rating="4" aria-label="4 stars">★</button>
+                <button type="button" data-rating="5" aria-label="5 stars">★</button>
+              </span>
+            </label>
+            <label>Your review<textarea id="reviewText" maxlength="1000" required placeholder="Tell us about your experience..."></textarea></label>
+            <button class="btn btn-primary" type="submit" id="reviewSubmit">Submit Review</button>
+            <div class="review-status" id="reviewStatus" aria-live="polite"></div>
+            <p class="review-note">Please share an honest review. Your name, rating and feedback will be visible to website visitors.</p>
+          </form>
+          <h3 style="font-size:1.25rem;margin-top:24px">What customers say</h3>
+          <div class="review-list" id="reviewList"><p class="address">Loading customer reviews…</p></div>
+          <div class="review-actions">
+            <a class="btn btn-dark" href="tel:+919552350555">Call the Cafe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand">☕ Chiu Cafe</div><p>Authentic Pintu and Didi Flavours</p></div>
+        <div><div class="footer-title">Get in touch</div><p>☎ <a href="tel:+919552350555">9552350555</a><br>✉ <a href="mailto:chiucafe26@gmail.com">chiucafe26@gmail.com</a></p></div>
+        <div><div class="footer-title">Visit us</div><p>Shop No. 03, Ground Floor, Raj, Durga Heritage, Daag, Ponda – 403401<br>Opp. PWD Water Supply</p><p>06:00 AM – 09:00 PM<br>Weekly off: Sunday</p></div>
+      </div>
+      <div class="copyright">© <span id="year"></span> Chiu Cafe. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <div class="mobile-bottom"><a href="#menu">🍽 View Menu</a><a href="tel:+919552350555">☎ Call Now</a></div>
+  <script>
+    function toggleMenu(){
+      const nav=document.getElementById('navlinks');
+      const btn=document.querySelector('.menu-toggle');
+      const opened=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',opened?'true':'false');
+      btn.textContent=opened?'✕':'☰';
+    }
+    function closeMenu(){
+      const nav=document.getElementById('navlinks');
+      const btn=document.querySelector('.menu-toggle');
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='☰';
+    }
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+
+  <!-- Public browser key only. Never put a Supabase service-role/secret key here. -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Add your Supabase Project URL and publishable (or legacy anon) key here after setup.
+    const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+    let selectedRating = 0;
+    let reviewClient = null;
+
+    const starButtons = [...document.querySelectorAll("#starPicker button")];
+    function paintStars() {
+      starButtons.forEach(button => {
+        const active = Number(button.dataset.rating) <= selectedRating;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(Number(button.dataset.rating) === selectedRating));
+      });
+    }
+    starButtons.forEach(button => button.addEventListener("click", () => {
+      selectedRating = Number(button.dataset.rating);
+      paintStars();
+    }));
+
+    function showReviewStatus(message, isError = false) {
+      const status = document.getElementById("reviewStatus");
+      status.textContent = message;
+      status.style.color = isError ? "#b42318" : "var(--green)";
+    }
+
+    function renderReviews(rows) {
+      const list = document.getElementById("reviewList");
+      list.replaceChildren();
+      if (!rows.length) {
+        const empty = document.createElement("p");
+        empty.className = "address";
+        empty.textContent = "No reviews yet. Be the first to share your experience!";
+        list.append(empty);
+        return;
+      }
+      rows.forEach(row => {
+        const card = document.createElement("article");
+        card.className = "review-entry";
+        const heading = document.createElement("div");
+        const name = document.createElement("strong");
+        name.textContent = row.customer_name;
+        const stars = document.createElement("span");
+        stars.className = "stars";
+        stars.textContent = "  " + "★".repeat(row.rating) + "☆".repeat(5 - row.rating);
+        const body = document.createElement("p");
+        body.textContent = row.review_text;
+        heading.append(name, stars);
+        card.append(heading, body);
+        list.append(card);
+      });
+    }
+
+    async function loadReviews() {
+      const list = document.getElementById("reviewList");
+      if (!window.supabase || SUPABASE_URL.startsWith("YOUR_") || SUPABASE_ANON_KEY.startsWith("YOUR_")) {
+        list.innerHTML = '<p class="address">Reviews will appear here after the cafe database is connected.</p>';
+        return;
+      }
+      reviewClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      const { data, error } = await reviewClient.from("cafe_reviews")
+        .select("id, customer_name, rating, review_text, created_at")
+        .order("created_at", { ascending: false }).limit(100);
+      if (error) {
+        list.textContent = "Could not load reviews right now. Please try again later.";
+        console.error(error);
+        return;
+      }
+      renderReviews(data || []);
+    }
+
+    document.getElementById("reviewForm").addEventListener("submit", async event => {
+      event.preventDefault();
+      const name = document.getElementById("reviewName").value.trim();
+      const review = document.getElementById("reviewText").value.trim();
+      const submit = document.getElementById("reviewSubmit");
+      if (!name || !review || selectedRating < 1) {
+        showReviewStatus("Please enter your name, choose a star rating and write a review.", true);
+        return;
+      }
+      if (!reviewClient) {
+        showReviewStatus("The review service is not connected yet. The cafe owner needs to finish the database setup.", true);
+        return;
+      }
+      submit.disabled = true;
+      submit.textContent = "Submitting…";
+      const { error } = await reviewClient.from("cafe_reviews").insert({
+        customer_name: name, rating: selectedRating, review_text: review
+      });
+      submit.disabled = false;
+      submit.textContent = "Submit Review";
+      if (error) {
+        showReviewStatus("Sorry, your review could not be submitted. Please try again.", true);
+        console.error(error);
+        return;
+      }
+      document.getElementById("reviewForm").reset();
+      selectedRating = 0;
+      paintStars();
+      showReviewStatus("Thank you! Your review has been published.");
+      await loadReviews();
+    });
+
+    loadReviews();
+  </script>
+
+</body>
+</html>
